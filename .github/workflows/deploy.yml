@@ -26,7 +26,9 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: NODE_OPTIONS=--openssl-legacy-provider npm run build
+        run: |
+          NODE_OPTIONS=--openssl-legacy-provider npm run build
+          ls -la dist
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -36,4 +38,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3
-        run: aws s3 sync dist/angular-contacts-app s3://angular-contacts-app-bucket --delete
+        run: aws s3 sync dist/ s3://angular-contacts-app-bucket --delete
