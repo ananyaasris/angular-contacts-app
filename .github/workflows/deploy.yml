@@ -11,8 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: angular-contacts-app-example-master
-
+        working-directory: SOURCE_DIR: angular-contacts-app-example-master/dist/angular-contacts
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
