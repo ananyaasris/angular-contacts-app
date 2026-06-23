@@ -1,5 +1,4 @@
-
-      name: Deploy Angular to S3
+name: Deploy Angular to S3
 
 on:
   push:
