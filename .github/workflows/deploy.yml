@@ -11,7 +11,8 @@ jobs:
 
     defaults:
       run:
-        working-directory: SOURCE_DIR: angular-contacts-app-example-master/dist/angular-contacts
+        working-directory: angular-contacts-app-example-master
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,7 +28,7 @@ jobs:
       - name: Build Angular app
         run: |
           NODE_OPTIONS=--openssl-legacy-provider npm run build
-          ls -R dist
+          ls -la dist
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -45,7 +46,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: angular-contacts-app-example-master/dist
+          SOURCE_DIR: angular-contacts-app-example-master/dist/angular-contacts
 
       - name: Invalidate CloudFront Cache
         if: success()
