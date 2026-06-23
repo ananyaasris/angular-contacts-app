@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: angular-contacts-app-example-master
+        working-directory:angular-contacts-app-example-master/src/index.html
 
     steps:
       - name: Checkout code
